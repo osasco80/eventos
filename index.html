@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Freelancer | O Pai Tá On</title>
+    <style>
+        /* --- Reset e Variáveis --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #8b5cf6; /* Roxo Neon */
+            --secondary: #06b6d4; /* Ciano Neon */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Header / Nav --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        /* Efeito de luz no fundo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.15;
+            top: 20%;
+            left: 25%;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* --- Botões --- */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+        }
+
+        /* --- Seção de Serviços --- */
+        .services {
+            padding: 5rem 5%;
+            background-color: rgba(17, 24, 39, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Rodapé / CTA --- */
+        footer {
+            padding: 5rem 5% 3rem;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            padding: 4rem 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            margin-bottom: 4rem;
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            header { padding: 1.5rem 5%; }
+            nav { display: none; } /* Simplificado para o exemplo */
+            .hero h1 { font-size: 2.5rem; }
+            .cta-box h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">SEUNOME.DEV</div>
+        <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Idéias tiradas do papel. <br>Pode relaxar, <span>o pai tá on.</span></h1>
+        <p>Desenvolvimento web moderno, rápido e focado em trazer resultados reais para o seu negócio ou projeto freelance.</p>
+        <a href="#contato" class="btn btn-primary">Bora Conversar?</a>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="services">
+        <h2 class="section-title">O Que Eu Faço Por Você</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>Landing Pages</h3>
+                <p>Páginas de alta conversão direto ao ponto, feitas sob medida para vender seu produto ou serviço.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Sites Institucionais</h3>
+                <p>Presença digital sólida com design moderno, responsivo (funciona bem em celular) e otimizado para o Google.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h3>Sistemas & Suporte</h3>
+                <p>Precisa de um ajuste, automação ou uma ferramenta específica? Eu resolvo sem burocracia.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer id="contato">
+        <div class="cta-box">
+            <h2>Tem um projeto em mente?</h2>
+            <p>Estou disponível para novos freelas. Vamos transformar sua ideia em código.</p>
+            <!-- Dica: adicione seu link direto do WhatsApp abaixo -->
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn btn-primary">Chamar no WhatsApp</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Seu Nome. Feito com código e café.</p>
+    </footer>
+
+</body>
+</html>
