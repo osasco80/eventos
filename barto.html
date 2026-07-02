@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bartô Rock & Comedy | O Point Mais Quente de Osasco</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        :root {
+            --bg-color: #08080c;
+            --card-bg: #12121a;
+            --neon-red: #ff0055;
+            --neon-yellow: #ffcc00;
+            --text-light: #ffffff;
+            --text-muted: #a0a0b0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(8, 8, 12, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--neon-red);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+        }
+
+        .logo {
+            font-family: 'Impact', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        .logo span {
+            color: var(--neon-yellow);
+            text-shadow: 0 0 10px var(--neon-yellow);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(8, 8, 12, 1)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1000') no-repeat center center/cover;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Impact', sans-serif;
+            font-size: 4.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight-red {
+            color: var(--neon-red);
+            text-shadow: 0 0 20px var(--neon-red);
+        }
+
+        .hero h1 .highlight-yellow {
+            color: var(--neon-yellow);
+            text-shadow: 0 0 20px var(--neon-yellow);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #e2e2e8;
+            font-weight: 300;
+        }
+
+        /* --- Botões --- */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: 'Impact', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+
+        .btn-delivery {
+            background: var(--neon-red);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
+        }
+
+        .btn-delivery:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--neon-red);
+        }
+
+        .btn-agenda {
+            background: transparent;
+            color: var(--neon-yellow);
+            border: 2px solid var(--neon-yellow);
+            box-shadow: inset 0 0 5px rgba(255, 204, 0, 0.2);
+        }
+
+        .btn-agenda:hover {
+            background: var(--neon-yellow);
+            color: black;
+            box-shadow: 0 0 20px var(--neon-yellow);
+        }
+
+        /* --- Seções do Site --- */
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Impact', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- Grid de Destaques --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--neon-red);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 85, 0.1);
+        }
+
+        .feature-card h3 {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+        }
+
+        /* --- CTA Footer --- */
+        .cta-footer {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000') center/cover;
+            text-align: center;
+            border-top: 2px solid var(--neon-yellow);
+            padding: 6rem 1rem;
+        }
+
+        .cta-footer h2 {
+            font-family: 'Impact', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px var(--neon-yellow);
+            color: var(--neon-yellow);
+        }
+
+        /* --- Footer Info --- */
+        footer {
+            background: #040406;
+            padding: 2rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #151520;
+        }
+
+        /* --- Responsivo --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2.2rem; }
+            .cta-footer h2 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">BARTÔ<span>.</span></div>
+        <div style="font-family: 'Impact', sans-serif; color: var(--neon-yellow);">OSASCO / SP</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Onde o <span class="highlight-red">Rock</span> Encontra a <span class="highlight-yellow">Comédia</span></h1>
+        <p>Cerveja trincando, as melhores porções da região, shows de Stand-Up com os grandes nomes da cena e muito Rock 'n' Roll ao vivo.</p>
+        <div>
+            <a href="https://barto.goomer.app/" target="_blank" class="btn btn-delivery">Pedir Delivery Online</a>
+            <a href="#agenda" class="btn btn-agenda">Ver Programação</a>
+        </div>
+    </section>
+
+    <!-- Experiências Bartô -->
+    <section class="section">
+        <h2 class="section-title">A Experiência Completa</h2>
+        <div class="features-grid">
+            
+            <div class="feature-card">
+                <span class="icon">🎤</span>
+                <h3>Stand-Up Comedy</h3>
+                <p>Os melhores humoristas do circuito nacional pisam no palco do Bartô. Risada garantida com ambiente estruturado e acústica de primeira.</p>
+            </div>
+
+            <div class="feature-card" style="border-left-color: var(--neon-yellow);">
+                <span class="icon">🎸</span>
+                <h3>Rock 'n' Roll Vivo</h3>
+                <p>Bandas cover e autorais trazendo o melhor do clássico ao metal. O som que Osasco respeita com o peso que a noite pede.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="icon">🍔</span>
+                <h3>Cardápio Lendário</h3>
+                <p>Porções monstruosas, hambúrgueres artesanais e aquele chopp estupidamente gelado. Disponível na casa ou direto na sua casa pelo Goomer!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call To Action Programação -->
+    <section id="agenda" class="cta-footer">
+        <h2>Garanta o Seu Lugar na Próxima Rodada</h2>
+        <p style="max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.2rem;">A casa mais tradicional da noite de Osasco está de portas abertas. Não mofagem em casa, cola no Bartô!</p>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn btn-delivery" style="box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);">Reservar Mesa via WhatsApp</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Bartô Rock & Comedy • Osasco, SP</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #555;">Desenvolvido com foco em conversão e performance.</p>
+    </footer>
+
+</body>
+</html>
