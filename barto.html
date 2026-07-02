@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ6L4JS8B4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -62,6 +62,23 @@
         .logo span {
             color: var(--neon-yellow);
             text-shadow: 0 0 10px var(--neon-yellow);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-socials a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .header-socials a:hover {
+            color: var(--neon-yellow);
         }
 
         /* --- Hero Section --- */
@@ -193,6 +210,45 @@
             color: var(--text-muted);
         }
 
+        /* --- Social Section --- */
+        .social-section {
+            background: #0d0d14;
+            text-align: center;
+            padding: 4rem 5%;
+            border-top: 1px solid #1a1a26;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-social {
+            padding: 0.8rem 2rem;
+            font-family: 'Impact', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-light);
+            border: 2px solid var(--text-muted);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-instagram:hover {
+            border-color: #ff0055;
+            background: #ff0055;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+        }
+
+        .btn-facebook:hover {
+            border-color: #1877f2;
+            background: #1877f2;
+            box-shadow: 0 0 15px rgba(24, 119, 242, 0.4);
+        }
+
         /* --- CTA Footer --- */
         .cta-footer {
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000') center/cover;
@@ -221,9 +277,13 @@
 
         /* --- Responsivo --- */
         @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-right { flex-direction: column; gap: 0.5rem; }
             .hero h1 { font-size: 2.8rem; }
             .section-title { font-size: 2.2rem; }
             .cta-footer h2 { font-size: 2.2rem; }
+            .social-links { flex-direction: column; gap: 1rem; align-items: center; }
+            .btn-social { width: 100%; max-width: 280px; }
         }
     </style>
 </head>
@@ -232,7 +292,13 @@
     <!-- Header -->
     <header>
         <div class="logo">BARTÔ<span>.</span></div>
-        <div style="font-family: 'Impact', sans-serif; color: var(--neon-yellow);">OSASCO / SP</div>
+        <div class="header-right">
+            <div class="header-socials">
+                <a href="https://www.instagram.com/bar.to_/" target="_blank" style="margin-right: 15px;" name="tag_insta_topo" id="tag_insta_topo">Instagram</a>
+                <a href="https://www.facebook.com/p/Barto-Rock-Comedy-61583328374325/" target="_blank" name="tag_face_topo" id="tag_face_topo">Facebook</a>
+            </div>
+            <div style="font-family: 'Impact', sans-serif; color: var(--neon-yellow);">OSASCO / SP</div>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -269,7 +335,17 @@
     <section id="agenda" class="cta-footer">
         <h2>Garanta o Seu Lugar na Próxima Rodada</h2>
         <p style="max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.2rem;">A casa mais tradicional da noite de Osasco está de portas abertas. Não mofagem em casa, cola no Bartô!</p>
-        <a href="https://wa.me/5511999999999" name="tag_contato_zap" id="tag_contato_zap" target="_blank" class="btn btn-delivery" style="box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);">Reservar Mesa via WhatsApp</a>
+        <a href="https://wa.me/5511972510303" name="tag_contato_zap" id="tag_contato_zap" target="_blank" class="btn btn-delivery" style="box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);">Reservar Mesa via WhatsApp</a>
+    </section>
+
+    <!-- Seção de Redes Sociais -->
+    <section class="social-section">
+        <h3 style="font-family: 'Impact', sans-serif; font-size: 2rem; text-transform: uppercase; letter-spacing: 1px;">Siga o Bartô nas Redes</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Fique por dentro das próximas bandas, noites de comédia e promoções exclusivas.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/bar.to_/" target="_blank" class="btn-social btn-instagram" name="tag_insta" id="tag_insta">Instagram</a>
+            <a href="https://www.facebook.com/p/Barto-Rock-Comedy-61583328374325/" target="_blank" class="btn-social btn-facebook" name="tag_face" id="tag_face">Facebook</a>
+        </div>
     </section>
 
     <!-- Footer -->
