@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Completo | Bartô Bar & Restaurante</title>
+    <style>
+        :root {
+            --primary: #f2994a;
+            --dark: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--dark); color: var(--text); line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        /* Header & Story */
+        header { text-align: center; padding: 40px 0; border-bottom: 1px solid #333; }
+        .logo-area h1 { font-size: 2.5rem; color: var(--primary); letter-spacing: 2px; }
+        .story-box { background: #1a1510; border-left: 4px solid var(--primary); padding: 20px; margin: 25px 0; border-radius: 4px; font-style: italic; }
+        .story-box p { margin-bottom: 10px; color: #e0e0e0; }
+        
+        /* Menu Navigation */
+        .menu-nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0; justify-content: center; }
+        .nav-btn { background: var(--card-bg); color: var(--text); border: 1px solid #444; padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-btn:hover { background: var(--primary); color: var(--dark); font-weight: bold; }
+        
+        /* Sections */
+        .menu-section { margin-bottom: 40px; scroll-margin-top: 20px; }
+        .section-title { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .section-badge { font-size: 0.8rem; background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; }
+        
+        /* Grid de Itens */
+        .menu-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        @media(min-width: 600px) { .menu-grid { grid-template-columns: 1fr 1fr; } }
+        
+        .menu-item { background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid #2a2a2a; display: flex; flex-direction: column; justify-content: space-between; }
+        .item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+        .item-name { font-weight: bold; font-size: 1.1rem; }
+        .item-price { color: var(--primary); font-weight: bold; white-space: nowrap; }
+        .item-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 5px; }
+        .badge-container { margin-top: 8px; display: flex; gap: 5px; }
+        .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 3px; font-weight: bold; }
+        .badge-vegan { background: #27ae60; color: white; }
+        .badge-lactose { background: #f39c12; color: white; }
+        
+        /* CTA Floating Button */
+        .cta-box { background: var(--card-bg); position: fixed; bottom: 0; left: 0; right: 0; padding: 15px; text-align: center; border-top: 1px solid #333; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); z-index: 100; }
+        .cta-btn { display: inline-block; background: #25d366; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); transition: 0.3s; }
+        .cta-btn:hover { transform: scale(1.05); background: #20ba59; }
+        .padding-bottom-cta { padding-bottom: 90px; }
+    </style>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ6L4JS8B4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MZ6L4JS8B4');
+
+        function dispararCliqueUnico(nomeDoEvento, urlDestino) {
+            if (!sessionStorage.getItem(nomeDoEvento)) {
+                gtag('event', nomeDoEvento, {
+                    'event_category': 'Conversão Site',
+                    'event_label': 'Menu_Digital'
+                });
+                sessionStorage.setItem(nomeDoEvento, 'true');
+            }
+            setTimeout(function() {
+                window.open(urlDestino, '_blank');
+            }, 150);
+        }
+    </script>
+</head>
+<body class="padding-bottom-cta">
+
+    <div class="container">
+        <header>
+            <div class="logo-area">
+                <h1>BARTÔ</h1>
+                <p>Bar & Restaurante • Osasco/SP</p>
+            </div>
+            
+            <div class="story-box">
+                <p><strong>A História do Bartô 🐾</strong></p>
+                <p>"Era uma vez um pequeno gato persa chamado Bartô, que amava camas quentinhas e dias de sol... Ele comia na mesa de jantar como todo mundo, sentado em uma cadeirinha só para ele. Para o Bartô, não havia tempo ruim!"</p>
+                <p>Revivendo sua memória e nutridos por sentimentos tranquilos, criamos este Bar & Restaurante para receber todo mundo com um pouquinho do amor que só o Bartô sabia dar. Porque todo dia é dia de sorrir com música, livros e comida quentinha! Miau!"</p>
+            </div>
+        </header>
+
+        <!-- Navegação Rápida -->
+        <nav class="menu-nav">
+            <a href="#feijoada" class="nav-btn">🍲 Feijoada</a>
+            <a href="#executivo" class="nav-btn">💼 Executivos</a>
+            <a href="#principais" class="nav-btn">🍽️ Principais</a>
+            <a href="#petiscos" class="nav-btn">🍟 Pra Petiscar</a>
+            <a href="#lanches" class="nav-btn">🍔 Lanches</a>
+            <a href="#drinks" class="nav-btn">🍹 Drinks</a>
+        </nav>
+
+        <!-- SEÇÃO: FEIJOADA -->
+        <section id="feijoada" class="menu-section">
+            <div class="section-title">
+                <span>Quarta & Sábado</span>
+                <span class="section-badge">Destaque da Casa</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Feijoada do Bartô (Grande)</span>
+                        <span class="item-price">R$ 79,90</span>
+                    </div>
+                    <p class="item-desc">A receita tradicional da família. Completa, quentinha e ideal para dividir com a galera.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Feijoada do Bartô (Pequena)</span>
+                        <span class="item-price">R$ 50,90</span>
+                    </div>
+                    <p class="item-desc">A porção perfeita para matar sua fome com o melhor sabor da região.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: EXECUTIVO -->
+        <section id="executivo" class="menu-section">
+            <div class="section-title">Almoço Executivo <small style="font-size:11px; color:var(--text-muted);">Segunda a Sexta</small></div>
+            <p style="font-size: 0.85rem; color: var(--primary); margin-bottom: 15px;">*Todos os pratos acompanham arroz, feijão e fritas.</p>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Omelete</span><span class="item-price">R$ 19,90</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Filé de Frango Grelhado</span><span class="item-price">R$ 20,90</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Tilápia Empanada</span><span class="item-price">R$ 25,90</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Contra Filé</span><span class="item-price">R$ 25,90</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PRINCIPAIS & CHEF -->
+        <section id="principais" class="menu-section">
+            <div class="section-title">Pratos Principais & Sugestões</div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Parmegiana de Cogumelos</span><span class="item-price">R$ 59,90</span></div>
+                    <p class="item-desc">Mix de cogumelos, molho de tomate artesanal da casa, queijo, arroz e fritas.</p>
+                    <div class="badge-container">
+                        <span class="badge badge-vegan">🌱 Vegano</span>
+                        <span class="badge badge-lactose">🧀 Contém Lactose</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Risoto Caprese</span><span class="item-price">R$ 55,90</span></div>
+                    <p class="item-desc">Clássico, cremoso e cheio de sabor.</p>
+                    <div class="badge-container">
+                        <span class="badge badge-vegan">🌱 Vegano</span>
+                        <span class="badge badge-lactose">🧀 Contém Lactose</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Milanesa de Frango</span><span class="item-price">R$ 38,90</span></div>
+                    <p class="item-desc">Acompanha arroz, fritas e salada.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Mignon com Purê de Pipoca</span><span class="item-price">R$ 62,90</span></div>
+                    <p class="item-desc">Uma combinação surpreendente e exclusiva do Chef.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PRA PETISCAR -->
+        <section id="petiscos" class="menu-section">
+            <div class="section-title">Pra Petiscar, baby</div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Bolinho de Cogumelos (6 un)</span><span class="item-price">R$ 35,90</span></div>
+                    <p class="item-desc">Bolinho crocante feito com mix especial de cogumelos selecionados.</p>
+                    <div class="badge-container"><span class="badge badge-vegan">🌱 Vegano</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Bolinho de Milho (6 un)</span><span class="item-price">R$ 29,90</span></div>
+                    <p class="item-desc">Bolinho de milho cremoso recheado com bastante requeijão.</p>
+                    <div class="badge-container"><span class="badge badge-lactose">🧀 Contém Lactose</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Porco Espinho (6 un)</span><span class="item-price">R$ 43,90</span></div>
+                    <p class="item-desc">Bolinho de pernil cremoso, enrolado no crocante macarrão cabelinho de anjo.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Torresmo Especial (350g)</span><span class="item-price">R$ 54,90</span></div>
+                    <p class="item-desc">Torresmo super crocante feito na casa, acompanhado de molho barbecue.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: LANCHES -->
+        <section id="lanches" class="menu-section">
+            <div class="section-title">Lanches Lendários</div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Stairway to Heaven</span><span class="item-price">R$ 48,90</span></div>
+                    <p class="item-desc">Hambúrguer de 200g de cogumelos, picles de pepino japonês, alface americana, tomate assado e molho tarê no pão tradicional.</p>
+                    <div class="badge-container"><span class="badge badge-vegan">🌱 Vegano</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">The Walrus</span><span class="item-price">R$ 54,90</span></div>
+                    <p class="item-desc">Hambúrguer de 200g, queijo prato, molho verde, alface americana, tomate e cebola caramelizada no pão australiano.</p>
+                    <div class="badge-container"><span class="badge badge-lactose">🧀 Contém Lactose</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Porcos Voadores</span><span class="item-price">R$ 54,90</span></div>
+                    <p class="item-desc">Sanduíche de pernil desfiado com abacaxi caramelizado, rúcula, tomate e muçarela na baguete de parmesão.</p>
+                    <div class="badge-container"><span class="badge badge-lactose">🧀 Contém Lactose</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: DRINKS -->
+        <section id="drinks" class="menu-section">
+            <div class="section-title">Drinks Autorais & Clássicos</div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Beetlejuice</span><span class="item-price">R$ 40,00</span></div>
+                    <p class="item-desc">Vodka, xarope de maçã verde, uva verde e uma incrível espuma artesanal de limão.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Brasília Amarela</span><span class="item-price">R$ 40,00</span></div>
+                    <p class="item-desc">Licor 43, suco de limão, xarope de gengibre, água com gás e espuma de gengibre.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header"><span class="item-name">Moscow Mule</span><span class="item-price">R$ 42,00</span></div>
+                    <p class="item-desc">Vodka, suco de limão, xarope e espuma de gengibre fresca.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<!-- CTA FIXO NO RODAPÉ -->
+<div class="cta-box">
+    <a href="#" class="cta-btn" onclick="dispararCliqueUnico('clique_menu_whatsapp', 'https://wa.me/5511972510303?text=Ol%C3%A1%2C%20equipe%20do%20Bart%C3%B4!%20Acessei%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20card%C3%A1pio%20e%20reservas.'); return false;">
+        PEDIR DELIVERY / RESERVAR VIA WHATSAPP
+    </a>
+</div>
+
+</body>
+</html>
